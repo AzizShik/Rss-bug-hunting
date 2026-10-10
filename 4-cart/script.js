@@ -62,7 +62,7 @@ function increaseQty(id) {
 
 function decreaseQty(id) {
 	const item = cart.find(i => i.id === id);
-  if (item.qty <= 1) return;
+	if (item.qty <= 1) return;
 	item.qty--;
 	renderCart();
 }
@@ -113,8 +113,10 @@ function renderCart() {
 	if (discount) {
 		total = total - total * discount;
 	}
-
-	badgeEl.textContent = cart.length;
+	const totalQtyAmount = cart.reduce((acc, current) => {
+		return (acc += current.qty);
+	}, 0);
+	badgeEl.textContent = totalQtyAmount;
 	totalEl.textContent = total;
 	emptyMsg.hidden = true;
 }
