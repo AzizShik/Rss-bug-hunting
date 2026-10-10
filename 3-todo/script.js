@@ -36,7 +36,7 @@ function deleteTask(id) {
 }
 
 function clearCompleted() {
-	tasks = [];
+	tasks = tasks.filter(item => !item.done);;
 	render();
 }
 
