@@ -45,12 +45,12 @@ function getVisibleTasks() {
 }
 
 function updateCounter() {
-  counter.textContent = "Активных задач: " + tasks.length;
+  const activeTasks = tasks.filter(item => !item.done);
+  counter.textContent = "Активных задач: " + activeTasks.length;
 }
 
 function render() {
   list.replaceChildren();
-
 
   const visible = getVisibleTasks();
   for (let i = 0; i < visible.length; i++) {
