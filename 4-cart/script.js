@@ -37,12 +37,20 @@ function addToCart(id) {
 	if (!product) {
 		return;
 	}
-	cart.push({
-		id: product.id,
-		name: product.name,
-		price: product.price,
-		qty: 1,
-	});
+
+	const exist = cart.find(item => item.id === product.id);
+
+	if (exist) {
+		exist.qty += 1;
+	} else {
+		cart.push({
+			id: product.id,
+			name: product.name,
+			price: product.price,
+			qty: 1,
+		});
+	}
+
 	renderCart();
 }
 
